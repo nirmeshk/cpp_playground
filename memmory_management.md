@@ -1,6 +1,5 @@
 ### How do I deal with memory leaks?
-source - https://www.stroustrup.com/bs_faq2.html#memory-leaks
-ref - A brief introduction to C++’s model for type- and resource-safety by Bjarne Stroustrup, Herb Sutter & Gabriel Dos Reis 
+
 
 By writing code that doesn't have any.
 Clearly, if your code has new operations, delete operations, and pointer arithmetic all over the place, you are going to mess up somewhere and get leaks, stray pointers, etc. This is true independently of how conscientious you are with your allocations: eventually the complexity of the code will overcome the time and effort you can afford. It follows that successful techniques rely on hiding allocation and deallocation inside more manageable types. Good examples are the standard containers. They manage memory for their elements better than you could without disproportionate effort. Consider writing this without the help of string and vector:
@@ -76,3 +75,9 @@ If you cannot handle allocation/deallocation implicitly as part of an object you
 Think about resources in general, rather than simply about memory.
 
 If systematic application of these techniques is not possible in your environment (you have to use code from elsewhere, part of your program was written by Neanderthals, etc.), be sure to use a memory leak detector as part of your standard development procedure, or plug in a garbage collector.
+
+
+### References 
+- https://www.educative.io/blog/cpp-memory-management
+- https://www.stroustrup.com/bs_faq2.html#memory-leaks
+- Paper - A brief introduction to C++’s model for type- and resource-safety by Bjarne Stroustrup, Herb Sutter & Gabriel Dos Reis 
