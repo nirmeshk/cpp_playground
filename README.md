@@ -3,6 +3,24 @@
 This repository is to learn c++ by working through some examples.
 Since most of the books and tutorials are catered towards new developers, this will act as a reference of code samples for the things that i use frequently. Bonus will be to implement some non trivial example in cpp. 
 
+## Build and Run
+```
+cd build
+cmake ../
+cmake --build .
+```
+
+Run: 
+
+```
+./hello
+
+## o/p
+
+Hello World Nirmesh!
+Heyo
+```
+
 ## IDE Setup 
 - After brief seraching around, looks like VS Code is the choice of editor if you are getting started. Clion has good review, but is not free. Visual studio for C++ is more advanced, but only available for windows :(. So for now, VSCode it is.
 - Setup vs code using instructions here -> https://code.visualstudio.com/docs/cpp/config-clang-mac
