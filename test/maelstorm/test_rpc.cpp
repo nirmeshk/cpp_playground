@@ -1,8 +1,7 @@
-#include "rpc.cpp"
 #include "gtest/gtest.h"
+#include "rpc.cpp"
 
 using namespace std;
-
 
 TEST(EchoTest, testJsonParsing) {
     std::string json_data_str = R"({"src": "n1", "dest": "c1", "body": {"type": "init"}})";

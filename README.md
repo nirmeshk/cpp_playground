@@ -33,6 +33,14 @@ Run Test from Vscode
 - Go to Test tab from the left side of the panel in vscode, you should see the tests already discovered ![image](images/Screenshot2024-09-03-9.19.55 PM.png)
 - Run individual tests Or all tests together
 
+## Automated Formatting with clang
+
+- install clang `brew install llvm`
+- make sure to add the path to .zshrc (`echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc`)
+- `source ~/.zshrc`
+- Now any default build should trigger the clang format
+- To call the format target explicitly, call `cmake --build . --target format`
+
 ## IDE Setup
 - After brief seraching around, looks like VS Code is the choice of editor if you are getting started. Clion has good review, but is not free. Visual studio for C++ is more advanced, but only available for windows :(. So for now, VSCode it is.
 - Setup vs code using instructions here -> https://code.visualstudio.com/docs/cpp/config-clang-mac
@@ -44,8 +52,9 @@ Run Test from Vscode
 
 ## Wishlist of the topics I want to cover
 - [x] hello world program
-- [] hello world with cmake
-- [] Running automated tests with cmake
+- [x] hello world with cmake
+- [x] Running automated tests with cmake
+- [x] Running automated formatting with cmake
 - [x] Use of std::map (ordered), std::unordered_map
 - [x] Use of array list equivalent (vector)
 - [ ] Two dimensional array (with rows of different sizes)
@@ -53,8 +62,6 @@ Run Test from Vscode
 - [ ] use of for/while loop
 - [ ] use of exceptions (try/catch??)
 - [ ] basic use of classes and objects
-- [ ] implement union find basic questions on leetcode in c++
-- [ ] implement Trie based questions on leetcode in c++
 - [ ] implement DFS
 - [ ] implement BFS
 - [ ] implement templated/concurrent trie https://15445.courses.cs.cmu.edu/fall2022/project0/

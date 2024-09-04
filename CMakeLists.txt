@@ -56,6 +56,7 @@ include(GoogleTest)
 gtest_discover_tests(echo_test)
 
 # Custom target to run tests
+# In future, can create more targets to divide up tests into multiple suits
 add_custom_target(run_tests
   COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
   DEPENDS echo_test
@@ -69,3 +70,44 @@ add_custom_command(
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
   COMMENT "Running tests..."
 )
+
+# Find clang-format
+find_program(CLANG_FORMAT "clang-format")
+if(NOT CLANG_FORMAT)
+  message(WARNING "clang-format not found, auto-formatting will not be available")
+endif()
+
+if(CLANG_FORMAT)
+  # Get all project source files
+  file(GLOB_RECURSE ALL_SOURCE_FILES
+    ${PROJECT_SOURCE_DIR}/src/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/*.h
+    ${PROJECT_SOURCE_DIR}/src/*.hpp
+    ${PROJECT_SOURCE_DIR}/test/*.cpp
+    ${PROJECT_SOURCE_DIR}/test/*.h
+    ${PROJECT_SOURCE_DIR}/test/*.hpp
+  )
+
+  add_custom_target(
+    format
+    COMMAND ${CLANG_FORMAT} -i -style=file ${ALL_SOURCE_FILES}
+    COMMENT "Auto-formatting codebase..."
+  )
+
+ # add_custom_target(
+ #   format
+ #   COMMENT "Auto-formatting codebase..."
+ # )
+
+ # # Add a custom command for each source file
+ # foreach(SOURCE_FILE ${ALL_SOURCE_FILES})
+ #   add_custom_command(
+ #     TARGET format
+ #     COMMAND ${CLANG_FORMAT} -i -style=file ${SOURCE_FILE}
+ #     COMMENT "Formatting ${SOURCE_FILE}"
+ #   )
+ # endforeach()
+
+  # Run auto-formatting before building the main target
+  add_dependencies(${PROJECT_NAME} format)
+endif()

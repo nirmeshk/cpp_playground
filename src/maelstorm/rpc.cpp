@@ -1,7 +1,7 @@
-#include<iostream>
-#include<string>
-#include <optional>
+#include <iostream>
 #include <nlohmann/json.hpp>
+#include <optional>
+#include <string>
 
 using namespace std;
 using json = nlohmann::json;
@@ -12,7 +12,7 @@ struct Body {
 };
 
 class Message {
-public:
+   public:
     string src;
     string dest;
     optional<Body> body;

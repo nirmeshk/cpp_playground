@@ -6,9 +6,8 @@ using namespace std;
 
 using json = nlohmann::json;
 
-
 int main() {
-    //std::cout << " Echo example start";
+    // std::cout << " Echo example start";
     string nodeId;
     bool c = true;
 
@@ -27,19 +26,16 @@ int main() {
         json j2 = json::parse(input);
         string type = j2["body"]["type"];
 
-        if(type ==  "echo") {
+        if (type == "echo") {
             int messageId = j2["body"]["msg_id"];
             string echo = j2["body"]["echo"];
-            json output = {
-                {"src", nodeId},
-                {"dest", j2["src"]},
-                {"body", {
-                    {"type", "echo_ok"},
-                    {"in_reply_to", messageId},
-                    {"msg_id", messageId},
-                    {"echo", echo}
-                }}
-            };
+            json output = {{"src", nodeId},
+                           {"dest", j2["src"]},
+                           {"body",
+                            {{"type", "echo_ok"},
+                             {"in_reply_to", messageId},
+                             {"msg_id", messageId},
+                             {"echo", echo}}}};
 
             cout << output.dump() << endl;
         } else if (type == "init") {
@@ -47,14 +43,9 @@ int main() {
             string dest = j2["src"];
             int messageId = j2["body"]["msg_id"];
 
-            json output = {
-                {"src", nodeId},
-                {"dest", dest},
-                {"body", {
-                    {"type", "init_ok"},
-                    {"in_reply_to", messageId}
-                }}
-            };
+            json output = {{"src", nodeId},
+                           {"dest", dest},
+                           {"body", {{"type", "init_ok"}, {"in_reply_to", messageId}}}};
 
             cout << output.dump() << endl;
         }
