@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include <optional>
 #include <nlohmann/json.hpp>
 
 using namespace std;
