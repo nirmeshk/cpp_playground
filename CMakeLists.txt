@@ -15,10 +15,12 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(json)
 
-add_executable(hello src/echo.cpp)
-target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
+add_executable(hello src/hello_world.cpp)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES
+add_executable(echo src/maelstorm/echo.cpp)
+target_link_libraries(echo PRIVATE nlohmann_json::nlohmann_json)
+
+set_target_properties(echo PROPERTIES
   LINK_SEARCH_START_STATIC ON
   LINK_SEARCH_END_STATIC ON
 )
