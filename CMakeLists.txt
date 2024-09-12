@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 project(hello)
 set(CMAKE_CXX_STANDARD 17)
@@ -27,6 +27,10 @@ FetchContent_MakeAvailable(json googletest)
 
 # Default targe
 add_executable(hello src/hello_world.cpp)
+add_executable(maps src/maps.cpp)
+add_executable(move_1 src/move_example_1.cpp)
+add_executable(move_2 src/move_example_2.cpp)
+add_executable(move_3 src/memory_allocation_vs_pooling.cpp)
 
 # Target for running echo exercise for maelstorm
 add_executable(echo src/maelstorm/echo.cpp)

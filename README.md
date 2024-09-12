@@ -49,6 +49,7 @@ Run Test from Vscode
 - Once the VScode is isntalled,
   + install https://marketplace.visualstudio.com/items?itemName=matepek.vscode-catch2-test-adapter to run tests
   + install https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools to get Vscode working well with cpp
+- Install CPP check plugin. You will also need to install cppcheck (`brew install Cppcheck`)
 
 ## Wishlist of the topics I want to cover
 - [x] hello world program
