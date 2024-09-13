@@ -8,6 +8,8 @@
 #include <random>
 #include <vector>
 
+using namespace std;
+
 // A simple class to simulate some data and operations
 class DataObject {
     std::vector<int> data;

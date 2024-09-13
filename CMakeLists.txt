@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 project(hello)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(nlohmann_json_url "https://github.com/nlohmann/json.git")
@@ -31,6 +31,7 @@ add_executable(maps src/maps.cpp)
 add_executable(move_1 src/move_example_1.cpp)
 add_executable(move_2 src/move_example_2.cpp)
 add_executable(move_3 src/memory_allocation_vs_pooling.cpp)
+add_executable(move_4 src/pointer_indirection.cpp)
 
 # Target for running echo exercise for maelstorm
 add_executable(echo src/maelstorm/echo.cpp)

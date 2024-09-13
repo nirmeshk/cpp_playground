@@ -51,7 +51,7 @@ Run Test from Vscode
   + install https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools to get Vscode working well with cpp
 - Install CPP check plugin. You will also need to install cppcheck (`brew install Cppcheck`)
 
-## Wishlist of the topics I want to cover
+## TODOs
 - [x] hello world program
 - [x] hello world with cmake
 - [x] Running automated tests with cmake
@@ -69,6 +69,12 @@ Run Test from Vscode
 - [ ] (Stretch goal) implement matrix multiplication from previous course https://github.com/cmu-db/bustub/commit/bf5e92aa6a20d659b0df4c3de5f6a9a56bf4edc8
 - [ ] implament OR-Set
 - [ ] implement merging intervals
+
+## Quirky Topics
+- [] [Examples of Usage of Move](src/move_example_1.cpp)
+- [] [Perf impact of move](src/move_example_2.cpp)
+- [] [Performance impact of pointer in-direction](src/pointer_indirection.cpp)
+- [] [(WIP) Impact of memory allocation](src/memory_allocation_vs_pooling.cpp)
 
 ## Suplimentary readings
 - [Some notes about how c++ memmory management works](memmory_management.md)
