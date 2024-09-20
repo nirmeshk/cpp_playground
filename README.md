@@ -69,6 +69,7 @@ Run Test from Vscode
 - [ ] (Stretch goal) implement matrix multiplication from previous course https://github.com/cmu-db/bustub/commit/bf5e92aa6a20d659b0df4c3de5f6a9a56bf4edc8
 - [ ] implament OR-Set
 - [ ] implement merging intervals
+- [ ] implement a toy embedded sqlite like database
 
 ## Quirky Topics
 - [] [Examples of Usage of Move](src/move_example_1.cpp)
