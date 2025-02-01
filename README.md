@@ -72,10 +72,10 @@ Run Test from Vscode
 - [ ] implement a toy embedded sqlite like database
 
 ## Quirky Topics
-- [] [Examples of Usage of Move](src/move_example_1.cpp)
-- [] [Perf impact of move](src/move_example_2.cpp)
-- [] [Performance impact of pointer in-direction](src/pointer_indirection.cpp)
-- [] [(WIP) Impact of memory allocation](src/memory_allocation_vs_pooling.cpp)
+- [Examples of Usage of Move](src/move_example_1.cpp)
+- [Perf impact of move](src/move_example_2.cpp)
+- [Performance impact of pointer in-direction](src/pointer_indirection.cpp)
+- [(WIP) Impact of memory allocation](src/memory_allocation_vs_pooling.cpp)
 
 ## Notes
 
