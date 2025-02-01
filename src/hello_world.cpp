@@ -39,8 +39,14 @@ int main() {
     int n = 23;
     float f = 234343.454545;
     double d = 122323.1212312312;
+    float ff = 3.14159f; // 32 bit
+    double dd = 3.141592653589793; // 64 bit
     char c = 'd';
     bool b = true;
+
+    uint32_t int32_111 = 10;
+    uint64_t int64_111 = 0010121212;
+    uintmax_t int64_1111 = 123123123123; //On a modern MacBook Pro, it's highly likely that intmax_t and int64_t will be the same size (64 bits).
 
     printf("some random float: %f double: %lf char: %c \n", f, d, c);
 

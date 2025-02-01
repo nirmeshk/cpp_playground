@@ -77,6 +77,10 @@ Run Test from Vscode
 - [] [Performance impact of pointer in-direction](src/pointer_indirection.cpp)
 - [] [(WIP) Impact of memory allocation](src/memory_allocation_vs_pooling.cpp)
 
+## Notes
+
+- [Compilation & Linking](LINKING.md)
+
 ## Suplimentary readings
 - [Some notes about how c++ memmory management works](memmory_management.md)
 - https://www.programiz.com/cpp-programming/variables-literals  (Quality tutorial)
