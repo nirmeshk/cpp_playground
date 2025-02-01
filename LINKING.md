@@ -20,15 +20,10 @@ Preprocessor commands always start with `#` and are processed before actual comp
 
 In header file (`math.h`):
 ```cpp
-#ifndef MATH_H
-#define MATH_H
-
 class Calculator {
 public:
     double add(double a, double b);  // Declaration only
 };
-
-#endif
 ```
 
 In source file (`math.cpp`):
@@ -58,6 +53,32 @@ T max(T a, T b) {
    - Risk of code bloat due to inline expansion
 3. Encapsulation benefits
    - Implementation details hidden from users of the header
+
+## Inline functions
+
+```
+// In header file
+inline int calculateValue(int x) {
+    if (x < 0) x = -x;
+    return x * x + 2 * x + 1;
+    // Imagine this being much longer...
+}
+
+// In some source file
+void process() {
+    int a = calculateValue(5);    // Function body copied here
+    int b = calculateValue(-3);   // And copied here again
+    int c = calculateValue(10);   // And here too
+}
+```
+
+Each place where calculateValue is called gets its own copy of the function code. This causes the code bloat.
+
+Most modern compilers will:
+
+- Ignore inline keywords if they think inlining would be detrimental
+- Automatically inline small functions even without the inline keyword
+- Use heuristics to balance code size vs performance
 
 ## Declaration vs Definition
 
