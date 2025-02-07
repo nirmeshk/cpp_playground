@@ -1,4 +1,7 @@
 #include <iostream>
+#include <list>
+#include <set>
+#include <string>
 #include <vector>
 using namespace std;
 
@@ -39,24 +42,21 @@ int main() {
     int n = 23;
     float f = 234343.454545;
     double d = 122323.1212312312;
-    float ff = 3.14159f; // 32 bit
-    double dd = 3.141592653589793; // 64 bit
+    float ff = 3.14159f;            // 32 bit
+    double dd = 3.141592653589793;  // 64 bit
     char c = 'd';
     bool b = true;
 
+    printf("\nInteger %d float %f double %lf char %c bool \n", n, f, d, c);
+
     uint32_t int32_111 = 10;
     uint64_t int64_111 = 0010121212;
-    uintmax_t int64_1111 = 123123123123; //On a modern MacBook Pro, it's highly likely that intmax_t and int64_t will be the same size (64 bits).
+    uintmax_t int64_1111 = 123123123123;  // On a modern MacBook Pro, it's highly likely that
+                                          // intmax_t and int64_t will be the same size (64 bits).
 
     printf("some random float: %f double: %lf char: %c \n", f, d, c);
 
     int number = 5;
-
-    if (number < 6) {
-        cout << "Number is less than 6" << endl;
-    } else {
-        cout << " number is greater than 6" << endl;
-    }
 
     int sum_of_first_five_numbers = 0;
 
@@ -111,11 +111,35 @@ int main() {
         cout << *iter << "  ";
     }
 
+    vector<int> v = {1, 2, 3, 4, 5};
+
+    // Remove single element at index
+    v.erase(v.begin() + 2);  // Removes 3rd element (index 2)
+
+    // Remove range of elements
+    v.erase(v.begin() + 1, v.begin() + 4);  // Removes elements from index 1 to 3
+
+    // Step 1: remove_if
+    auto iiii = remove_if(v.begin(), v.end(), [](int x) { return x % 2 == 0; });
+    // After remove_if: {1, 3, 5, 4, 5}
+    //                           ^ returns iterator here
+    //                           everything after is "garbage"
+
+    // Step 2: erase
+    v.erase(iiii /* iterator from remove_if */, v.end());
+    // Final result: {1, 3, 5}
+
+    // combined
+    v = {1, 2, 3, 4, 5};
+
+    v.erase(remove_if(v.begin(), v.end(), [](int x) { return x % 2 == 0; }), v.end());
+
     cout << endl << "** Pointers ** " << endl;
 
     /**
      * Pointers
-     * **/
+     *
+     **/
 
     int var = 5;
 
@@ -137,5 +161,10 @@ int main() {
     // print the content of the address pointVar points to
     cout << "Content of the address pointed to by pointVar (*pointVar) = " << *pointVar << endl;
 
+    // Other types of iterators on STL
+
+    vector<int>::size_type len;
+    set<string>::const_iterator it;
+    list<double>::reverse_iterator rit;
     return 0;
 }

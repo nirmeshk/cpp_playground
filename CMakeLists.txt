@@ -28,6 +28,7 @@ FetchContent_MakeAvailable(json googletest)
 # Default targe
 add_executable(hello src/hello_world.cpp)
 add_executable(maps src/maps.cpp)
+add_executable(stl src/stl_best_practice.cpp)
 add_executable(move_1 src/move_example_1.cpp)
 add_executable(move_2 src/move_example_2.cpp)
 add_executable(move_3 src/memory_allocation_vs_pooling.cpp)
