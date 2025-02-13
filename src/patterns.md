@@ -1,5 +1,27 @@
 
+## Preprocesor directive
 
+```cpp
+#ifndef ERROR_H
+#define ERROR_H
+
+#include <string>
+
+class Error {
+    // ... Error class definition
+};
+
+#endif // ERROR_H
+``` 
+
+vs modern 
+
+```cpp
+pragma once
+```
+
+
+Helps to tell pre-procesor to only incldue a header file once (In case multiple files are referencing the same header file via `#include`)
 
 ## Common practice to name alias
 
@@ -38,6 +60,16 @@ public:
 private:
     std::vector<RefCountedWorker> workers_;
 };
+```
+
+## Callback functions
+
+```cpp
+class Error {} // sample Error class with various categories and all.
+
+// std::function<return_type(Args...)>;
+using on_operation_complete = std::function<void(const Error&)>;
+
 ```
 
 ## enable_shared_from_this
