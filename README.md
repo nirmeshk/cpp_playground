@@ -90,6 +90,10 @@ Run Test from Vscode
 - https://herbsutter.com/
 - https://www.thecodedmessage.com/posts/cpp-move/
 
+## TODO Readings 
+- https://preshing.com/20120612/an-introduction-to-lock-free-programming/ 
+- https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/ 
+
 ## Interesting projects
 - https://github.com/google/leveldb
 - https://github.com/scylladb/seastar

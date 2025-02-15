@@ -72,6 +72,60 @@ using on_operation_complete = std::function<void(const Error&)>;
 
 ```
 
+## Function Binding
+
+Transforms complex function signatures into simpler ones by binding/capturing
+known parameters, leaving only the "future" parameters unbound.
+
+
+```cpp
+template<typename T>
+class Service {
+    // Original complex function
+    void complexOperation(
+        Database* db,      // Known at bind time
+        Config* cfg,       // Known at bind time
+        UserContext* ctx,  // Known at bind time
+        std::vector<T> items,    // Known at bind time
+        CallbackResult result    // Will get this later
+    );
+
+    void example() {
+        // We have these values now
+        auto* db = getCurrentDb();
+        auto* cfg = getConfig();
+        auto* ctx = getUserContext();
+        auto items = getItems();
+
+        // Modern approach (preferred) - using lambda
+        auto handler = [this, db, cfg, ctx, items]
+            (CallbackResult result) {
+            complexOperation(db, cfg, ctx, items, result);
+        };
+
+        // handler is now: void(CallbackResult)
+        
+        // Legacy approach - using std::bind
+        auto handler_old = std::bind(
+            &Service::complexOperation,
+            this,
+            db,
+            cfg, 
+            ctx,
+            items,
+            std::placeholders::_1 // Only this parameter remains "open"
+        );
+         // handler_old is now: void(CallbackResult)
+
+        // Both transform: void(DB*, Cfg*, Ctx*, vector<T>, Result)
+        //          into: void(Result)
+
+        // Usage:
+        someAsyncOperation(handler);
+    }
+};
+```
+
 ## enable_shared_from_this
 
 ref - https://stackoverflow.com/a/5548314
@@ -241,3 +295,6 @@ The benefits of `enable_shared_from_this` here are:
 4. Multiple callbacks can safely hold references to the same object
 
 Without `enable_shared_from_this`, managing these cascading async operations while ensuring proper lifetime management would be much more complex and error-prone.
+
+## Casting
+
