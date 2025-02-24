@@ -298,6 +298,37 @@ Without `enable_shared_from_this`, managing these cascading async operations whi
 
 ## Casting
 
+## Comparators
+```cpp
+struct CustomCompare {
+    bool operator()(int a, int b) const { return a > b; }
+};
+
+// Uses the named type directly
+std::priority_queue<int, std::vector<int>, CustomCompare> pq;
+```
+
+Or a lambda function -
+
+```cpp
+struct Person {
+    std::string name;
+    int age;
+    double salary;
+};
+
+// Custom comparator for specific field
+auto compareByAge = [](const Person& a, const Person& b) {
+    return a.age < b.age;
+};
+
+// Multiple criteria comparison
+auto compareByNameThenAge = [](const Person& a, const Person& b) {
+    if (a.name != b.name) return a.name < b.name;
+    return a.age < b.age;
+};
+```
+
 ## `decltype` 
 
 `decltype(comp)` is a type deduction operator that gives you the exact type of the expression `comp`. It's particularly useful with lambdas because each lambda has its own unique, compiler-generated type that you can't write directly.
