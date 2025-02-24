@@ -298,3 +298,81 @@ Without `enable_shared_from_this`, managing these cascading async operations whi
 
 ## Casting
 
+## `decltype` 
+
+`decltype(comp)` is a type deduction operator that gives you the exact type of the expression `comp`. It's particularly useful with lambdas because each lambda has its own unique, compiler-generated type that you can't write directly.
+
+Let's break it down:
+
+```cpp
+// Let's define a lambda
+auto comp = [](int a, int b) { return a > b; };
+
+// decltype(comp) gives us the actual type of this lambda
+// It might look something like this internally (simplified):
+// class __lambda_8472947 {
+//     bool operator()(int a, int b) const { return a > b; }
+// };
+```
+
+Some concrete examples:
+
+```cpp
+// Simple types
+int x = 42;
+decltype(x) y = 10;  // y is an int
+
+std::string str = "hello";
+decltype(str) another_str = "world";  // another_str is a std::string
+
+// With lambdas
+auto lambda1 = [](int x) { return x * 2; };
+decltype(lambda1) lambda2 = lambda1;  // Creates another lambda of the same type
+
+// Real-world usage with priority queue
+auto comp = [](int a, int b) { return a > b; };
+std::priority_queue<int, std::vector<int>, decltype(comp)> pq(comp);
+
+// What's actually happening above:
+// 1. decltype(comp) gets the unique type of our lambda
+// 2. This type becomes the third template parameter of priority_queue
+// 3. The constructor gets the actual comparator object
+```
+
+To really understand why we need this, let's see what happens without `decltype`:
+
+```cpp
+auto comp = [](int a, int b) { return a > b; };
+
+// This won't compile - the compiler doesn't know what type to use
+// std::priority_queue<int, std::vector<int>, comp> pq;  // ERROR!
+
+// These are different types!
+auto comp1 = [](int a, int b) { return a > b; };
+auto comp2 = [](int a, int b) { return a > b; };
+
+// This will print "false" - they're different types
+std::cout << std::is_same_v<decltype(comp1), decltype(comp2)> << "\n";
+
+// But decltype lets us specify the exact type we want
+using Comp1Type = decltype(comp1);
+using Comp2Type = decltype(comp2);
+
+std::priority_queue<int, std::vector<int>, Comp1Type> pq1(comp1);  // Works!
+// std::priority_queue<int, std::vector<int>, Comp2Type> pq2(comp1);  // ERROR!
+```
+
+You can also see the type (in a way) using type_info:
+```cpp
+#include <typeinfo>
+std::cout << typeid(comp).name() << "\n";  // Will print something cryptic
+```
+
+The main points about `decltype`:
+1. It gives you the exact type of an expression
+2. It's evaluated at compile time
+3. It's essential when working with lambda types
+4. It's useful for template metaprogramming
+5. It helps maintain type safety while working with complex types
+
+Without `decltype`, it would be very difficult to use lambdas as template parameters because we wouldn't have a way to specify their types.

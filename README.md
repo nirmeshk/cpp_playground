@@ -90,6 +90,9 @@ Run Test from Vscode
 - https://herbsutter.com/
 - https://www.thecodedmessage.com/posts/cpp-move/
 
+## Performane Optimization Resources
+- https://learn.microsoft.com/en-us/cpp/build/profile-guided-optimizations?view=msvc-170 
+
 ## TODO Readings 
 - https://preshing.com/20120612/an-introduction-to-lock-free-programming/ 
 - https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/ 
