@@ -1262,3 +1262,6 @@ A barrier is a reusable synchronization point. Each time all threads arrive, the
    counter.fetch_add(1000, std::memory_order_relaxed);
    ```
 
+--------
+
+**Continue to [part2](concurrency_part2.md)**
