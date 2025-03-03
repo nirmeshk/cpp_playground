@@ -76,7 +76,8 @@ Run Test from Vscode
 - [Perf impact of move](src/move_example_2.cpp)
 - [Performance impact of pointer in-direction](src/pointer_indirection.cpp)
 - [(WIP) Impact of memory allocation](src/memory_allocation_vs_pooling.cpp)
-
+- [Cpp concurrency Part 1](src/concurrency_part1.md)
+- [Cpp concurrency Part 2](src/concurrency_part2.md)
 ## Notes
 
 - [Compilation & Linking](LINKING.md)
