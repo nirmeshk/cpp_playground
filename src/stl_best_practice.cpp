@@ -61,7 +61,8 @@ void vectorBestPractices() {
     vector<int> nums = {1, 2, 3, 4, 5, 2, 3, 2};
 
     // remove(nums.begin(), nums.end(), 2)
-    // remove just moves the elements to the end instead of re-shifting everything
+    // remove just moves the elements to the end instead of re-sizing everything
+    // It will still do moves, but avoid memory allocations
     // This way, if you have multiple removals, you can avoid multiple
     // re-shrinkings
     nums.erase(remove(nums.begin(), nums.end(), 2), nums.end());
@@ -93,7 +94,30 @@ void mapBestPractices() {
     for (const auto& [key, value] : people) {
         cout << key << ": " << value.getName() << "\n";
     }
+
+    // Checking key exists 
+    
+    std::unordered_map<string, int> m;
+
+    // DON'T do this to check existence:
+    if (m["key"]) { }  // This will INSERT a key if it doesn't exist!
+
+    // modern
+    if (m.contains("key")) {
+        // key exists
+    }
+    
+    // modern
+    if (m.count("key")) {
+        // key exists
+    }
+
+    // most efficniet
+    m["key"]++; // insert 0 if does not exists, and at the same time increment it
+
 }
+
+
 
 // List Best Practices
 void listBestPractices() {

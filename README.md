@@ -84,6 +84,7 @@ Run Test from Vscode
 
 ## Suplimentary readings
 - [Some notes about how c++ memmory management works](memmory_management.md)
+- Gold standard for understanding CPU caches - https://youtu.be/WDIkqP4JbkE?si=lqLVXcXuX3yFsUuV 
 - https://www.programiz.com/cpp-programming/variables-literals  (Quality tutorial)
 - https://www.geeksforgeeks.org/header-files-in-c-cpp-and-its-uses/
 - https://github.com/rigtorp/awesome-modern-cpp
